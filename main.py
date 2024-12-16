@@ -1,3 +1,4 @@
+import sys
 import pygame
 from constants import *
 from asteroid import Asteroid
@@ -25,6 +26,10 @@ def main():
         pygame.Surface.fill(screen, "black")
         for obj in updatables:
             obj.update(dt)
+        for ast in asteroids:
+            if ast.is_colliding(player):
+                print("Game over!")
+                sys.exit()
         for obj in drawables:
             obj.draw(screen)
 
