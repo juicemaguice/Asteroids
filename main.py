@@ -44,6 +44,10 @@ def main():
                     break
         for obj in drawables:
             obj.draw(screen)
+        
+        if pygame.time.get_ticks() % 1000 == 0:  # every second
+            print(f"Number of asteroids: {len(asteroids)}")
+            print(f"Number of shots    : {len(shots)}")
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
