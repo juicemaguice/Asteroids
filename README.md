@@ -1,5 +1,5 @@
 # Asteroids
-built in pygame, with help from boot.dev
+built using pygame, with help from boot.dev
 
 Current TODO list:
 
