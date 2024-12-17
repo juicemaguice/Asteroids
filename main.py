@@ -8,16 +8,12 @@ from shot import Shot
 
 def main():
     pygame.init()
-    updatables = pygame.sprite.Group()
-    drawables = pygame.sprite.Group()
-    asteroids = pygame.sprite.Group()
-    shots = pygame.sprite.Group()
+    updatables, drawables, asteroids, shots = pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group()
     Player.containers = (updatables, drawables)
     Asteroid.containers = (asteroids, updatables, drawables)
     AsteroidField.containers = (updatables)
     Shot.containers = (shots, updatables, drawables)
     
-    SCREEN_WIDTH = 1920
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock, dt = pygame.time.Clock(), 0
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -47,9 +43,11 @@ def main():
         for obj in drawables:
             obj.draw(screen)
 
+        """
         if pygame.time.get_ticks() % 90 == 0:  # every second
             print(f"Number of asteroids: {len(asteroids)}")
             print(f"Number of shots    : {len(shots)}")
+        """
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
