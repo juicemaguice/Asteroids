@@ -24,3 +24,8 @@ class CircleShape(pygame.sprite.Sprite):
 
     def is_colliding(self, other):
         return (self.radius + other.radius) > pygame.math.Vector2.distance_to(self.position, other.position)
+    
+    def is_exiting(self):
+        exiting_bottom, exiting_top = self.position.y <= KILL_BORDER_BOTTOM, self.position.y >= KILL_BORDER_TOP
+        exiting_left, exiting_right = self.position.x <= KILL_BORDER_LEFT, self.position.x >= KILL_BORDER_RIGHT
+        return exiting_bottom or exiting_left or exiting_right or exiting_top

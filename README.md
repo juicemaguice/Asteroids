@@ -1,8 +1,10 @@
-Asteroids, built in pygame, with help from boot.dev
+# Asteroids
+built in pygame, with help from boot.dev
 
 Current TODO list:
 
-- [ ] Add a scoring system
+- [x] ~~start cleanup~~
+- [ ] __Add a scoring system__
 - [ ] Implement multiple lives and respawning
 - [ ] Add an explosion effect for the asteroids
 - [ ] Add acceleration to the player movement

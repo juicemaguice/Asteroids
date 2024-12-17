@@ -17,7 +17,7 @@ def main():
     AsteroidField.containers = (updatables)
     Shot.containers = (shots, updatables, drawables)
     
-
+    SCREEN_WIDTH = 1920
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock, dt = pygame.time.Clock(), 0
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -34,18 +34,20 @@ def main():
         for ast in asteroids:
             if ast.is_colliding(player):
                 print("Game over!")
-                print(f"{ast.position= }\n\t{ast.containers=}")
-                print(f"{player.position= }")
                 sys.exit()
+            if ast.is_exiting():
+                ast.kill()
             for shot in shots:
                 if shot.is_colliding(ast):
                     ast.split()
                     shot.kill()
                     break
+                if shot.is_exiting():
+                    shot.kill()
         for obj in drawables:
             obj.draw(screen)
-        
-        if pygame.time.get_ticks() % 1000 == 0:  # every second
+
+        if pygame.time.get_ticks() % 90 == 0:  # every second
             print(f"Number of asteroids: {len(asteroids)}")
             print(f"Number of shots    : {len(shots)}")
 
